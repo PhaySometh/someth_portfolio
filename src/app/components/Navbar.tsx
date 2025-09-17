@@ -26,9 +26,13 @@ function Navbar() {
       const navRect = navRef.current.getBoundingClientRect();
       const elementRect = element.getBoundingClientRect();
 
+      // Make underline 60% of the text width and center it
+      const underlineWidth = elementRect.width * 0.6;
+      const centerOffset = (elementRect.width - underlineWidth) / 2;
+
       setUnderlineStyle({
-        width: elementRect.width,
-        left: elementRect.left - navRect.left,
+        width: underlineWidth,
+        left: elementRect.left - navRect.left + centerOffset,
       });
     }
   };
@@ -98,7 +102,7 @@ function Navbar() {
                     <Link
                       href={item.href}
                       className={`
-                        relative px-4 py-2 text-base font-medium transition-colors duration-200 rounded-md
+                        relative px-4 py-3 pb-4 text-base font-medium transition-colors duration-200 rounded-md
                         ${
                           isActive(item.href)
                             ? "text-primary"
@@ -116,11 +120,16 @@ function Navbar() {
 
               {/* Animated underline */}
               <div
-                className="absolute bottom-0 h-0.5 bg-primary transition-all duration-300 ease-out rounded-full"
+                className="absolute h-1 bg-gradient-to-r from-primary to-secondary transition-all duration-300 ease-out rounded-full shadow-sm"
                 style={{
                   width: `${underlineStyle.width}px`,
                   left: `${underlineStyle.left}px`,
+                  bottom: "-8px", // More gap from text
                   opacity: underlineStyle.width > 0 ? 1 : 0,
+                  boxShadow:
+                    underlineStyle.width > 0
+                      ? "0 0 8px rgba(var(--color-primary-rgb, 59, 130, 246), 0.5)"
+                      : "none",
                 }}
               />
             </div>
