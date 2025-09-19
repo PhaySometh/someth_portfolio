@@ -21,6 +21,7 @@ function Navbar() {
   const navItems = useMemo(
     () => [
       { href: "/", label: "Home" },
+      { href: "/project", label: "Project" },
       { href: "/portfolio", label: "Portfolio" },
       { href: "/about", label: "About" },
     ],
