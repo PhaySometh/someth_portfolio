@@ -148,20 +148,13 @@ export default function ProjectContent() {
                     transition={{ duration: 0.8 }}
                   >
                     <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                      {/* Regular img tag for testing */}
-                      <img
+                      <Image
                         src={project.image}
                         alt={project.title}
+                        width={800}
+                        height={600}
                         className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                        loading="lazy"
-                        onError={(e) => {
-                          console.error("Failed to load image:", project.image);
-                          e.currentTarget.style.backgroundColor = "#f3f4f6";
-                          e.currentTarget.style.display = "flex";
-                          e.currentTarget.style.alignItems = "center";
-                          e.currentTarget.style.justifyContent = "center";
-                          e.currentTarget.innerHTML = `<span style="color: #6b7280;">Image not found: ${project.title}</span>`;
-                        }}
+                        priority={index < 3}
                       />
 
                       {/* Hover overlay - only shows on hover */}
@@ -245,8 +238,8 @@ export default function ProjectContent() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            I'm always interested in new opportunities and exciting projects.
-            Let's build something amazing together!
+            I&apos;m always interested in new opportunities and exciting projects.
+            Let&apos;s build something amazing together!
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
