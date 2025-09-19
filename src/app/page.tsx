@@ -1,4 +1,5 @@
 import Hero from "./home/hero";
+import StatsSection from "./home/statsSection";
 import Technology from "./home/technology";
 import RecentProjects from "./home/recentProject";
 
@@ -16,6 +17,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       <Hero />
+      <StatsSection />
       <Technology />
       <RecentProjects />
     </div>
