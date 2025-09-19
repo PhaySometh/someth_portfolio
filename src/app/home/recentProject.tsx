@@ -127,11 +127,13 @@ export default function RecentProjects() {
                   transition={{ duration: 0.8, delay: 0.2 }}
                 >
                   <div className="relative overflow-hidden rounded-2xl shadow-2xl">
-                    <img
+                    <Image
                       src={project.image}
                       alt={project.title}
+                      width={800}
+                      height={600}
                       className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
-                      loading="lazy"
+                      priority={index < 2}
                     />
 
                     {/* Hover overlay - only shows on hover */}

@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import Image from "next/image";
 import { motion } from "framer-motion";
 
 interface Technology {
@@ -219,15 +220,12 @@ export default function Technology() {
 
   const TechnologyCard = ({ technology }: { technology: Technology }) => (
     <div className="flex flex-col items-center justify-center w-40 h-40 bg-gray-50 rounded-lg shadow-md p-4 transition-all duration-300 hover:scale-105 hover:shadow-lg hover:bg-white flex-shrink-0">
-      <img
+      <Image
         src={technology.image}
         alt={technology.name}
+        width={64}
+        height={64}
         className="w-16 h-16 mb-2 object-contain"
-        onError={(e) => {
-          // Fallback to a generic tech icon if image fails to load
-          e.currentTarget.src =
-            "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg";
-        }}
       />
       <span className="font-bold text-center text-sm leading-tight text-black">
         {technology.name}
