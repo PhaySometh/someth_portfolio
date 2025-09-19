@@ -238,8 +238,8 @@ export default function ProjectContent() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.6, delay: 0.3 }}
           >
-            I&apos;m always interested in new opportunities and exciting projects.
-            Let&apos;s build something amazing together!
+            I&apos;m always interested in new opportunities and exciting
+            projects. Let&apos;s build something amazing together!
           </motion.p>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
