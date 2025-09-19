@@ -133,7 +133,7 @@ export default function RecentProjects() {
                       className="w-full h-64 md:h-80 lg:h-96 object-cover group-hover:scale-105 transition-transform duration-500 ease-out"
                       loading="lazy"
                     />
-                    
+
                     {/* Hover overlay - only shows on hover */}
                     <div className="absolute inset-0 bg-black opacity-0 group-hover:opacity-20 transition-all duration-300 pointer-events-none" />
 
