@@ -84,7 +84,7 @@ export default function Hero() {
         return () => clearTimeout(timeout);
       }
     }
-  }, [typedText, isTyping, currentRoleIndex]);
+  }, [typedText, isTyping, currentRoleIndex, roles]);
 
   // Cursor blinking effect
   useEffect(() => {
@@ -96,7 +96,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <motion.section 
+    <motion.section
       className="bg-white overflow-hidden relative"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -110,7 +110,7 @@ export default function Hero() {
         >
           {/* Layer #3: Background Text - "Hey," and "There" - Top positioned */}
           <div className="absolute inset-x-0 top-4 sm:top-6 md:top-8 lg:top-12 flex justify-between pointer-events-none z-10">
-            <motion.h1 
+            <motion.h1
               className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -118,7 +118,7 @@ export default function Hero() {
             >
               Hey,
             </motion.h1>
-            <motion.h1 
+            <motion.h1
               className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
               initial={{ opacity: 0, y: -30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -129,7 +129,7 @@ export default function Hero() {
           </div>
 
           {/* Layer #2: Main Image Container - Bottom positioned */}
-          <motion.div 
+          <motion.div
             className="flex items-end justify-center z-20"
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -155,21 +155,21 @@ export default function Hero() {
           </motion.div>
 
           {/* Layer #1: Bottom Left Text - "I'M SOMETH PHAY" - Bottom positioned */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 z-30"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1.0, ease: "easeOut", delay: 1.1 }}
           >
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black text-black leading-none mb-0">
-              I'M <br />
+              I&apos;M <br />
               SOMETH <br />
               PHAY
             </h2>
           </motion.div>
 
           {/* Layer #1: Bottom Right Text - Typing Animation - Bottom positioned */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-0 z-30"
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}

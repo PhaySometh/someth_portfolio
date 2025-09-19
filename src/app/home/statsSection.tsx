@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 
 const STATS_DATA = [
@@ -93,7 +93,7 @@ export default function StatsSection() {
   };
 
   return (
-    <motion.section 
+    <motion.section
       className="bg-white"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
@@ -111,21 +111,21 @@ export default function StatsSection() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ 
-                duration: 0.8, 
+              transition={{
+                duration: 0.8,
                 ease: "easeOut",
-                delay: index * 0.1 
+                delay: index * 0.1,
               }}
             >
-              <motion.div 
+              <motion.div
                 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-2"
                 initial={{ scale: 0.5 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ 
-                  duration: 0.6, 
+                transition={{
+                  duration: 0.6,
                   ease: "easeOut",
-                  delay: index * 0.1 + 0.3 
+                  delay: index * 0.1 + 0.3,
                 }}
               >
                 {formatStatValue(
@@ -134,15 +134,15 @@ export default function StatsSection() {
                   stat.suffix
                 )}
               </motion.div>
-              <motion.div 
+              <motion.div
                 className="text-sm sm:text-base md:text-lg font-medium text-gray-600 whitespace-nowrap"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
-                transition={{ 
-                  duration: 0.4, 
+                transition={{
+                  duration: 0.4,
                   ease: "easeOut",
-                  delay: index * 0.1 + 0.5 
+                  delay: index * 0.1 + 0.5,
                 }}
               >
                 {stat.label}

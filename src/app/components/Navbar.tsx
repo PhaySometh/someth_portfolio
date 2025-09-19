@@ -2,12 +2,12 @@
 
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
 
 function Navbar() {
   const pathname = usePathname();
-  const [hoveredItem, setHoveredItem] = useState<string | null>(null);
   const [underlineStyle, setUnderlineStyle] = useState({ width: 0, left: 0 });
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
@@ -42,12 +42,10 @@ function Navbar() {
     href: string,
     event: React.MouseEvent<HTMLAnchorElement>
   ) => {
-    setHoveredItem(href);
     updateUnderline(event.currentTarget);
   };
 
   const handleMouseLeave = () => {
-    setHoveredItem(null);
     // Find active item and update underline to it
     const activeItem = navItems.find((item) => isActive(item.href));
     if (activeItem && navRef.current) {
@@ -73,17 +71,17 @@ function Navbar() {
         setUnderlineStyle({ width: 0, left: 0 });
       }
     }
-  }, [pathname]);
+  }, [pathname, navItems, isActive]);
 
   return (
-    <motion.div 
+    <motion.div
       className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-gray-200"
       initial={{ y: -100, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      transition={{ 
-        duration: 0.8, 
+      transition={{
+        duration: 0.8,
         ease: "easeOut",
-        delay: 0.2 
+        delay: 0.2,
       }}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -94,9 +92,11 @@ function Navbar() {
               href="/"
               className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200"
             >
-              <img
+              <Image
                 src="/somethphay_logo.png"
                 alt="Logo"
+                width={40}
+                height={40}
                 className="h-10 w-10"
               />
               <span className="font-black text-xl text-black">Someth Phay</span>

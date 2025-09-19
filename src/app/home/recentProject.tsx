@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 
 export default function RecentProjects() {
   const projects = [
@@ -50,9 +51,11 @@ export default function RecentProjects() {
               className="card bg-base-100 shadow-xl hover:shadow-2xl transition-all duration-300"
             >
               <figure className="px-4 pt-4">
-                <img
+                <Image
                   src={project.image}
                   alt={project.title}
+                  width={400}
+                  height={192}
                   className="rounded-xl h-48 w-full object-cover"
                 />
               </figure>
