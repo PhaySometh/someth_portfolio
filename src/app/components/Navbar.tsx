@@ -1,6 +1,12 @@
 "use client";
 
-import React, { useState, useRef, useEffect } from "react";
+import React, {
+  useState,
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
@@ -12,15 +18,21 @@ function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navRef = useRef<HTMLUListElement>(null);
 
-  const navItems = [
-    { href: "/", label: "Home" },
-    { href: "/portfolio", label: "Portfolio" },
-    { href: "/about", label: "About" },
-  ];
+  const navItems = useMemo(
+    () => [
+      { href: "/", label: "Home" },
+      { href: "/portfolio", label: "Portfolio" },
+      { href: "/about", label: "About" },
+    ],
+    []
+  );
 
-  const isActive = (path: string) => {
-    return pathname === path;
-  };
+  const isActive = useCallback(
+    (path: string) => {
+      return pathname === path;
+    },
+    [pathname]
+  );
 
   const updateUnderline = (element: HTMLElement | null) => {
     if (element && navRef.current) {

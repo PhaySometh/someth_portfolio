@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -21,12 +21,15 @@ export default function Hero() {
     "/7.png",
   ];
 
-  const roles = [
-    "A\nSoftware\nEngineer",
-    "A\nFullstack\nDeveloper",
-    "A\nWebsite\nDeveloper",
-    "A\nCo-founder\nof SMEAN",
-  ];
+  const roles = useMemo(
+    () => [
+      "A\nSoftware\nEngineer",
+      "A\nFullstack\nDeveloper",
+      "A\nWebsite\nDeveloper",
+      "A\nCo-founder\nof SMEAN",
+    ],
+    []
+  );
 
   // Image switching effect - synchronized with typing animation
   useEffect(() => {
