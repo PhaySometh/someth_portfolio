@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const pathname = usePathname();
@@ -75,7 +76,16 @@ function Navbar() {
   }, [pathname]);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-base-100 shadow-sm border-b border-base-200">
+    <motion.div 
+      className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-gray-200"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ 
+        duration: 0.8, 
+        ease: "easeOut",
+        delay: 0.2 
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -89,7 +99,7 @@ function Navbar() {
                 alt="Logo"
                 className="h-10 w-10"
               />
-              <span className="font-bold text-xl">Someth Phay</span>
+              <span className="font-black text-xl text-black">Someth Phay</span>
             </Link>
           </div>
 
@@ -102,11 +112,11 @@ function Navbar() {
                     <Link
                       href={item.href}
                       className={`
-                        relative px-4 py-3 pb-4 text-base font-medium transition-colors duration-200 rounded-md
+                        relative px-4 py-3 pb-4 text-base font-bold transition-colors duration-200 rounded-md
                         ${
                           isActive(item.href)
-                            ? "text-primary"
-                            : "text-base-content hover:text-primary"
+                            ? "text-black"
+                            : "text-gray-600 hover:text-black"
                         }
                       `}
                       onMouseEnter={(e) => handleMouseEnter(item.href, e)}
@@ -120,16 +130,12 @@ function Navbar() {
 
               {/* Animated underline */}
               <div
-                className="absolute h-1 bg-gradient-to-r from-primary to-secondary transition-all duration-300 ease-out rounded-full shadow-sm"
+                className="absolute h-1 bg-black transition-all duration-300 ease-out rounded-full"
                 style={{
                   width: `${underlineStyle.width}px`,
                   left: `${underlineStyle.left}px`,
                   bottom: "-8px", // More gap from text
                   opacity: underlineStyle.width > 0 ? 1 : 0,
-                  boxShadow:
-                    underlineStyle.width > 0
-                      ? "0 0 8px rgba(var(--color-primary-rgb, 59, 130, 246), 0.5)"
-                      : "none",
                 }}
               />
             </div>
@@ -139,11 +145,11 @@ function Navbar() {
           <div className="flex items-center gap-4">
             {/* Mobile menu button */}
             <button
-              className="lg:hidden p-2 rounded-md hover:bg-base-200 transition-colors"
+              className="lg:hidden p-2 rounded-md hover:bg-gray-100 transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               <svg
-                className="w-6 h-6"
+                className="w-6 h-6 text-black"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
@@ -168,7 +174,7 @@ function Navbar() {
 
             <Link
               href="/contact"
-              className="btn btn-primary rounded-2xl hover:scale-105 hover:shadow-lg transition-all duration-200 ease-out"
+              className="bg-black text-white px-6 py-2 rounded-2xl font-bold hover:bg-gray-800 hover:scale-105 hover:shadow-lg transition-all duration-200 ease-out"
             >
               Contact
             </Link>
@@ -177,18 +183,18 @@ function Navbar() {
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
-          <div className="lg:hidden border-t border-base-200">
+          <div className="lg:hidden border-t border-gray-200">
             <div className="px-4 py-2 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`
-                    block px-3 py-2 rounded-md text-base font-medium transition-colors duration-200
+                    block px-3 py-2 rounded-md text-base font-bold transition-colors duration-200
                     ${
                       isActive(item.href)
-                        ? "text-primary bg-primary/10"
-                        : "text-base-content hover:text-primary hover:bg-base-200"
+                        ? "text-black bg-gray-100"
+                        : "text-gray-600 hover:text-black hover:bg-gray-50"
                     }
                   `}
                   onClick={() => setIsMobileMenuOpen(false)}
@@ -200,7 +206,7 @@ function Navbar() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -95,54 +96,87 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="min-h-screen bg-white overflow-hidden relative flex items-center justify-center">
+    <motion.section 
+      className="bg-white overflow-hidden relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Container - Everything positioned relative to this */}
-        <div className="relative flex items-center justify-center min-h-screen">
-          {/* Layer #3: Background Text - "Hey," and "There" - Aligned with bottom text spacing */}
-          <div className="absolute inset-0 flex items-start justify-between pt-8 sm:pt-12 md:pt-16 lg:pt-20 pointer-events-none z-10">
-            <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] font-black text-black/5 select-none leading-none">
+        {/* Main Container - Content-based height */}
+        <div
+          className="relative py-8 sm:py-12 md:py-16 lg:py-20 flex flex-col justify-end"
+          style={{ minHeight: "50vh" }}
+        >
+          {/* Layer #3: Background Text - "Hey," and "There" - Top positioned */}
+          <div className="absolute inset-x-0 top-4 sm:top-6 md:top-8 lg:top-12 flex justify-between pointer-events-none z-10">
+            <motion.h1 
+              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+            >
               Hey,
-            </h1>
-            <h1 className="text-[4rem] sm:text-[5rem] md:text-[6rem] lg:text-[8rem] xl:text-[10rem] font-black text-black/5 select-none leading-none">
+            </motion.h1>
+            <motion.h1 
+              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.7 }}
+            >
               There
-            </h1>
+            </motion.h1>
           </div>
 
-          {/* Layer #2: Main Image Container - Bottom-aligned with text */}
-          <div className="absolute inset-0 flex items-end justify-center pb-8 sm:pb-12 md:pb-16 lg:pb-20 z-20">
-            <div className="relative w-[360px] h-[450px] sm:w-[420px] sm:h-[525px] md:w-[480px] md:h-[600px] lg:w-[540px] lg:h-[675px] xl:w-[600px] xl:h-[750px]">
+          {/* Layer #2: Main Image Container - Bottom positioned */}
+          <motion.div 
+            className="flex items-end justify-center z-20"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.0, ease: "easeOut", delay: 0.8 }}
+          >
+            <div className="relative w-[300px] h-[375px] sm:w-[360px] sm:h-[450px] md:w-[420px] md:h-[525px] lg:w-[480px] lg:h-[600px] xl:w-[540px] xl:h-[675px]">
               <div
                 className={`absolute inset-0 transition-all duration-500 ${
                   isImageVisible
-                    ? "transform translate-y-0 opacity-100"
-                    : "transform translate-y-full opacity-0"
+                    ? "opacity-100 scale-100"
+                    : "opacity-0 scale-95"
                 }`}
               >
                 <Image
                   src={images[currentImageIndex]}
                   alt="Someth Phay"
                   fill
-                  className="object-cover object-bottom"
+                  className="object-cover object-bottom rounded-lg"
                   priority
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
-          {/* Layer #1: Bottom Left Text - "I'M SOMETH PHAY" - Top layer */}
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 z-30">
-            <h2 className="text-5xl sm:text-6xl md:text-8xl lg:text-10xl font-black text-black leading-tight">
+          {/* Layer #1: Bottom Left Text - "I'M SOMETH PHAY" - Bottom positioned */}
+          <motion.div 
+            className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 z-30"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: "easeOut", delay: 1.1 }}
+          >
+            <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black text-black leading-none mb-0">
               I'M <br />
               SOMETH <br />
               PHAY
             </h2>
-          </div>
+          </motion.div>
 
-          {/* Layer #1: Bottom Right Text - Typing Animation - Top layer */}
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-0 z-30">
+          {/* Layer #1: Bottom Right Text - Typing Animation - Bottom positioned */}
+          <motion.div 
+            className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-0 z-30"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.4 }}
+          >
             <div className="text-right">
-              <div className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-bold text-black leading-tight whitespace-pre-line">
+              <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight whitespace-pre-line">
                 {typedText}
                 <span
                   className={`${
@@ -153,9 +187,9 @@ export default function Hero() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
