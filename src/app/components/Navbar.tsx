@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
 function Navbar() {
   const pathname = usePathname();
@@ -75,7 +76,16 @@ function Navbar() {
   }, [pathname]);
 
   return (
-    <div className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-gray-200">
+    <motion.div 
+      className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-gray-200"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ 
+        duration: 0.8, 
+        ease: "easeOut",
+        delay: 0.2 
+      }}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -196,7 +206,7 @@ function Navbar() {
           </div>
         )}
       </div>
-    </div>
+    </motion.div>
   );
 }
 

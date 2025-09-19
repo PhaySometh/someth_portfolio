@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 export default function Hero() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -95,7 +96,12 @@ export default function Hero() {
   }, []);
 
   return (
-    <section className="bg-white overflow-hidden relative">
+    <motion.section 
+      className="bg-white overflow-hidden relative"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+    >
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main Container - Content-based height */}
         <div
@@ -104,16 +110,31 @@ export default function Hero() {
         >
           {/* Layer #3: Background Text - "Hey," and "There" - Top positioned */}
           <div className="absolute inset-x-0 top-4 sm:top-6 md:top-8 lg:top-12 flex justify-between pointer-events-none z-10">
-            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none">
+            <motion.h1 
+              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.5 }}
+            >
               Hey,
-            </h1>
-            <h1 className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none">
+            </motion.h1>
+            <motion.h1 
+              className="text-[3rem] sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[8rem] font-black text-black/5 select-none leading-none"
+              initial={{ opacity: 0, y: -30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: "easeOut", delay: 0.7 }}
+            >
               There
-            </h1>
+            </motion.h1>
           </div>
 
           {/* Layer #2: Main Image Container - Bottom positioned */}
-          <div className="flex items-end justify-center z-20">
+          <motion.div 
+            className="flex items-end justify-center z-20"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1.0, ease: "easeOut", delay: 0.8 }}
+          >
             <div className="relative w-[300px] h-[375px] sm:w-[360px] sm:h-[450px] md:w-[420px] md:h-[525px] lg:w-[480px] lg:h-[600px] xl:w-[540px] xl:h-[675px]">
               <div
                 className={`absolute inset-0 transition-all duration-500 ${
@@ -131,19 +152,29 @@ export default function Hero() {
                 />
               </div>
             </div>
-          </div>
+          </motion.div>
 
           {/* Layer #1: Bottom Left Text - "I'M SOMETH PHAY" - Bottom positioned */}
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 z-30">
+          <motion.div 
+            className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-0 z-30"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1.0, ease: "easeOut", delay: 1.1 }}
+          >
             <h2 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl xl:text-9xl font-black text-black leading-none mb-0">
               I'M <br />
               SOMETH <br />
               PHAY
             </h2>
-          </div>
+          </motion.div>
 
           {/* Layer #1: Bottom Right Text - Typing Animation - Bottom positioned */}
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-0 z-30">
+          <motion.div 
+            className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 right-0 z-30"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 1.4 }}
+          >
             <div className="text-right">
               <div className="text-2xl sm:text-3xl md:text-4xl lg:text-6xl xl:text-7xl font-bold text-black leading-tight whitespace-pre-line">
                 {typedText}
@@ -156,9 +187,9 @@ export default function Hero() {
                 </span>
               </div>
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
