@@ -94,7 +94,7 @@ export default function StatsSection() {
 
   return (
     <motion.section
-      className="bg-white"
+      className="bg-white py-8 md:py-12"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
@@ -103,11 +103,11 @@ export default function StatsSection() {
     >
       <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Stats Row */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 sm:gap-6 md:gap-8 lg:gap-6">
+        <div className="grid grid-cols-1 min-[480px]:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 md:gap-8 lg:gap-6">
           {STATS_DATA.map((stat, index) => (
             <motion.div
               key={stat.key}
-              className="text-center"
+              className="text-center px-2"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.3 }}
@@ -118,7 +118,7 @@ export default function StatsSection() {
               }}
             >
               <motion.div
-                className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-2"
+                className="text-2xl min-[480px]:text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-black mb-1 md:mb-2"
                 initial={{ scale: 0.5 }}
                 whileInView={{ scale: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
@@ -135,7 +135,7 @@ export default function StatsSection() {
                 )}
               </motion.div>
               <motion.div
-                className="text-sm sm:text-base md:text-lg font-medium text-gray-600 whitespace-nowrap"
+                className="text-xs min-[480px]:text-sm sm:text-base md:text-lg font-medium text-gray-600 leading-tight break-words hyphens-auto"
                 initial={{ opacity: 0 }}
                 whileInView={{ opacity: 1 }}
                 viewport={{ once: true, amount: 0.3 }}
